@@ -1,0 +1,18 @@
+
+public class Ejercicio_3 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		String palabra="UnA chicA en el cielo vive en oceanos salvaje";
+		String textoCifrado="";
+		for(int i=0;i<palabra.length();i++) {
+			char c = palabra.toLowerCase().charAt (i);
+			int ascii=(int)c;
+			ascii+=1;
+			char caracter=(char)ascii;
+			textoCifrado=textoCifrado+caracter;
+		}
+		System.out.println("Texto cifrado: "+textoCifrado);
+	}
+
+}

@@ -1,0 +1,69 @@
+import java.util.Arrays;
+import java.util.Scanner;
+
+public class Ejercicio_1_B {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+        System.out.println ("Por favor introduzca la cantidad de numero que va tener su array:");
+        String entradaTeclado = "";
+        Scanner entradaEscaner = new Scanner (System.in); //Creación de un objeto Scanner
+        entradaTeclado = entradaEscaner.nextLine (); //Invocamos un método sobre un objeto Scanner
+        try {
+            int number = Integer.parseInt(entradaTeclado);
+            int []array= new int[number];
+            pedirNumeros(array,number);
+            ordenar(array);
+        }
+        catch (NumberFormatException ex){
+            ex.printStackTrace();
+        }
+	}
+	
+	public static void pedirNumeros(int[] array,int cantidad) {
+		for(int i=0;i<cantidad;i++) {
+			System.out.println ("Por favor introduzca el "+(i+1)+"° numero");
+			String entrada = "";
+	        Scanner entradaEscaner = new Scanner (System.in); //Creación de un objeto Scanner
+	        entrada = entradaEscaner.nextLine (); //Invocamos un método sobre un objeto Scanner
+	        int numero = Integer.parseInt(entrada);
+	        System.out.println (numero);
+            array[i]=numero;
+		}
+	}
+	
+	public static void ordenar(int[] array) {
+		System.out.println ("Si quiere Ordenarlos de menor a mayor ingrese A:\n Si quiere Ordenarlos de mayor a menor ingrese A:");
+		String entrada = "";
+        Scanner entradaEscaner = new Scanner (System.in); //Creación de un objeto Scanner
+        entrada = entradaEscaner.nextLine (); //Invocamos un método sobre un objeto Scanner
+		if (entrada == "A" || entrada == "a") {
+			int temporal = 0;
+			for (int i = 0; i < array.length; i++) {
+				for (int j = 1; j < (array.length - i); j++) {
+					if (array[j - 1] > array[j]) {
+						temporal = array[j - 1];
+						array[j - 1] = array[j];
+						array[j] = temporal;
+					}
+				}
+			}
+			System.out.println(Arrays.toString(array));
+		} else if (entrada == "B" || entrada == "b") {
+			int temporal = 0;
+			for (int i = 0; i < array.length; i++) {
+				for (int j = 1; j < (array.length - i); j++) {
+					if (array[j - 1] < array[j]) {
+						temporal = array[j - 1];
+						array[j - 1] = array[j];
+						array[j] = temporal;
+					}
+				}
+			}
+			System.out.println(Arrays.toString(array));
+		} else {
+			System.out.println("LA letra enviada no es valida");
+		}
+	}
+
+}
